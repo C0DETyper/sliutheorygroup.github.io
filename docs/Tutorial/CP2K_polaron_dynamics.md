@@ -3,7 +3,8 @@
 __Author__: Chris Ahart
 -- -
 
-![Hole polaron](https://github.com/LiuTheoryLab/wiki_cp2k/blob/main/tio2/anatase/polaron.png)
+![Hole polaron](https://github.com/LiuTheoryLab/wiki_cp2k/blob/main/tio2/anatase/cell-221/md/neutral-4hours-100k-COMVEL_TO-1e-10-TEMPTOL-10-200k-300k-dz-400k-500k-csvr-timecon-1-COMVEL_TO-1e-10-nvt-u-3.5-hole-timestep-1.0-o-3.5-ti-0/hirshfeld_spin_all.png)
+![Hole polaron](https://github.com/LiuTheoryLab/wiki_cp2k/blob/main/tio2/anatase/cell-221/md/neutral-4hours-100k-COMVEL_TO-1e-10-TEMPTOL-10-200k-300k-dz-400k-500k-csvr-timecon-1-COMVEL_TO-1e-10-nvt-u-3.5-hole-timestep-1.0-o-3.5-ti-0/bond_lengths_average.png)
 
 The tutorial extends the previous tutorial on geometry optimisation of polarons to consider DFT-MD of polarons in anatase TiO2. Hopefully by the end of this tutorial you will be comfortable generating images such as the one above.
 
@@ -34,7 +35,5 @@ The keyword 'TIMECON' is  the time constant of the thermostat, the small the tim
 Once you have performed equilibration with the CSVR thermostat for some appropriate amount of time, you may then want to switch to ENSEMBLE NPT_F in combination with STRESS_TENSOR ANALYTICAL which will allow your cell to change and maintain constant pressure. I would recommend first equilibrating with NVT and then switching to NPT_F.
 
 ## Other remarks:
-```
 1. The timestep 1.0 fs is generally suitable for most systems. Increasing this to 2.0 is possible, but may cause a decrease in accuracy and MD stability. 
 2. MD stability in CP2K is generally good. However, very occasionally you will encounter bad geometries that may cause problems in the SCF convergence. You should check the column in 'tio2-1.ener' for 'UsedTime[s]' to make sure the value is roughly constant in time, and periodically check the CP2K output file to make sure the SCF is converging smoothly. There is a keyword 'IGNORE_CONVERGENCE_FAILURE' with default value FALSE, that will cause CP2K to crash if the SCF convergence fails. You may set this to TRUE, so long as you are careful. 
-```

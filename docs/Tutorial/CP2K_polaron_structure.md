@@ -17,6 +17,8 @@ For a CP2K log file ['cp2k_log.log'](https://github.com/LiuTheoryLab/wiki_cp2k/b
 
 ```txt
 grep 'Total F' cp2k_log.log 
+```
+```txt
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5789.263100175019645
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5789.265174970603766
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5789.265770267490552
@@ -32,6 +34,8 @@ For a geometry optimisation including 6 steps, there are 8 total energies. The l
 Run command 
 ```txt
  grep 'HOMO - LUMO gap' cp2k_log.log | tail -n 2
+```
+```txt
  HOMO - LUMO gap [eV] :    2.065950
  HOMO - LUMO gap [eV] :    2.065950
 ```
@@ -42,6 +46,8 @@ Next we perform a geometry optimisation starting using the automatically generat
 
 ```txt
 grep 'Total F' cp2k_log.log 
+```
+```txt
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5789.465546168061337
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5789.465793318644501
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5789.465839580055217
@@ -50,6 +56,8 @@ grep 'Total F' cp2k_log.log
 
 ```txt
 grep 'HOMO - LUMO gap' cp2k_log.log | tail -n 2
+```
+```txt
  HOMO - LUMO gap [eV] :    2.074650
  HOMO - LUMO gap [eV] :    0.006997
 ```
@@ -76,6 +84,8 @@ Running the same commands:
 
 ```txt
  grep 'Total F' cp2k_log.log 
+ ```
+ ```txt
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5772.858935726821983
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5772.879371841569082
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:            -5772.886847055649014
@@ -104,6 +114,8 @@ Running the same commands:
 
 ```txt
 grep 'HOMO - LUMO gap' cp2k_log.log | tail -n 2
+```
+```txt
  HOMO - LUMO gap [eV] :    2.385723
  HOMO - LUMO gap [eV] :    2.290350
 ```
@@ -129,15 +141,15 @@ This tutorial continues in part 2, running AIMD simulations in CP2K.
 3. Optimally tuned range-separated hybrid functionals such as HSE or PBE0 remain the only appropriate functionals for polaron structure and dynamics. As these are expensive, I am currently exploring how machine learning can be used to increase the accessible length-scales and time-scales while preserving hybrid level accuracy. I hope that in the future advances in density functional theory will provide more accurate and cheaper functionals, however this seems unlikely to happen in the near-future. 
 
 ## CP2K website:
-[CP2K official releases](https://github.com/cp2k/cp2k/releases)
-[CP2K tutorials](https://www.cp2k.org/howto)
-[CP2K manual](https://manual.cp2k.org/trunk)
-[CP2K Google group](https://groups.google.com/group/cp2k)
+1. [CP2K official releases](https://github.com/cp2k/cp2k/releases)
+2. [CP2K tutorials](https://www.cp2k.org/howto)
+3. [CP2K manual](https://manual.cp2k.org/trunk)
+4. [CP2K Google group](https://groups.google.com/group/cp2k)
 
 ## Other tutorials I have written:
-[Potential control and current induced forces using CP2K+SMEAGOL](https://wiki.ch.ic.ac.uk/wiki/index.php?title=Potential_control_and_current_induced_forces_using_CP2K%2BSMEAGOL)
-[Converging magnetic systems in CP2K](https://wiki.ch.ic.ac.uk/wiki/index.php?title=Converging_magnetic_systems_in_CP2K)
+1. [Potential control and current induced forces using CP2K+SMEAGOL](https://wiki.ch.ic.ac.uk/wiki/index.php?title=Potential_control_and_current_induced_forces_using_CP2K%2BSMEAGOL)
+2. [Converging magnetic systems in CP2K](https://wiki.ch.ic.ac.uk/wiki/index.php?title=Converging_magnetic_systems_in_CP2K)
 
 ## Other tutorials I have contributed to:
-[Trends in catalytic activity, Imperial Collge London](https://wiki.ch.ic.ac.uk/wiki/index.php?title=TrendsCatalyticActivity)
-[Constrained DFT, CP2K website](https://manual.cp2k.org/trunk/methods/dft/constrained.html)
+1. [Trends in catalytic activity, Imperial Collge London](https://wiki.ch.ic.ac.uk/wiki/index.php?title=TrendsCatalyticActivity)
+2. [Constrained DFT, CP2K website](https://manual.cp2k.org/trunk/methods/dft/constrained.html)
