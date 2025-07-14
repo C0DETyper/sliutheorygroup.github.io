@@ -3,7 +3,7 @@
 __Author__: Chris Ahart
 -- -
 
-![Hole polaron](https://www.westlake.edu.cn/campuslife/yungu/202212/W020221205545093655086.png)
+![Hole polaron](https://github.com/LiuTheoryLab/wiki_cp2k/blob/main/tio2/anatase/polaron.png)
 
 The tutorial extends the previous tutorial on geometry optimisation of polarons to consider DFT-MD of polarons in anatase TiO2. Hopefully by the end of this tutorial you will be comfortable generating images such as the one above.
 

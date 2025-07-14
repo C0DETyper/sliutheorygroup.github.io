@@ -124,11 +124,9 @@ To extend this work, you could now look at the change in trapping energy with su
 This tutorial continues in part 2, running AIMD simulations in CP2K.
 
 ## Other remarks:
-```
 1. CP2K is a challenging code to use, with many keywords and generally poor documentation. It can take a while to become experienced with CP2K, and get a 'feel' for appropriate keyword choices. The values in this work are a reasonable starting point, and should work for most systems that are not magnetic or strongly correlated. 
 2. Polarons are generally only indirectly measured by experiments. For example in conductivity measurements polarons are characterised by an increase in conductivity with temperature, as there is an activation barrier for polaron hopping, while band transport is characterised by a decrease with temperature, as a result of phonon scattering. As such, polaron calculations can be seen as problematic as the structure and dynamics of polarons are challenging to compare with experiment. There is often considerable disagreement regarding the structure and dynamics of polarons in different materials.
 3. Optimally tuned range-separated hybrid functionals such as HSE or PBE0 remain the only appropriate functionals for polaron structure and dynamics. As these are expensive, I am currently exploring how machine learning can be used to increase the accessible length-scales and time-scales while preserving hybrid level accuracy. I hope that in the future advances in density functional theory will provide more accurate and cheaper functionals, however this seems unlikely to happen in the near-future. 
-```
 
 ## CP2K website:
 [CP2K official releases](https://github.com/cp2k/cp2k/releases)
