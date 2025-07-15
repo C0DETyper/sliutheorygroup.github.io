@@ -1,4 +1,4 @@
-# CP2K Polaron Geometry Optimisation
+# CP2K Polaron Geometry Optimisation with PBE+U
 
 __Author__: Chris Ahart
 -- -
@@ -129,7 +129,7 @@ This means that the polaron has localised on atom 175, with a spin moment of +0.
 
 To finish, you can plot the CP2K output .cube files using VESTA or VMD. The files 'SPIN_DENSITY' contain the spin density (difference in electron density for the alpha and beta spin channels) printed at each geometry optimisation step. You should see that the spin density is initially delocalised over all atoms, and as the geometry optimisation progresses the spin density localises onto a single oxygen atom. The final spin density should be consistent with the image presented at the beginning of this tutorial.
 
-This tutorial continues in part 2, running AIMD simulations in CP2K.
+This tutorial continues in part 2, 'CP2K Polaron DFT-MD with PBE+U'.
 
 ## Extensions:
 
