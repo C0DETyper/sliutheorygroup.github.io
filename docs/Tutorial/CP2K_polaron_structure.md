@@ -7,7 +7,7 @@ __Author__: Chris Ahart
 
 In this tutorial I will show how to perform calculations of polaron structures in CP2K. Hopefully by the end of this tutorial you will be comfortable generating images such as the one above. The system chosen is the hole polaron in anatase TiO2, where DFT+U calculations are capable of reproducing polaron structures in qualitative agreement with hybrid calculations. To make this tutorial suitable for those without tier 1 HPC access, I will not include any hybrid calculations and will only consider small supercells. If you are interested to use hybrid functionals in CP2K, then please speak with me.
 
-This tutorial is not intended as a beginners guide to DFT or CP2K. For those new to CP2K, I recommend watching the [recorded lectures](https://www.youtube.com/watch?v=v2vnZbhNEpw&list=PLrmNhuZo9sgYJqeTWUhdhtYu3Ol988prg) and working through the exercises from the [CP2K Workshop 2019 at Ghent University](https://www.cp2k.org/events:2019_cp2k_workshop_ghent:index). I have included some additional links at the at end of tutorial.
+This tutorial is not intended as a beginners guide to DFT or CP2K. For those new to CP2K, I recommend watching the [recorded lectures](https://www.youtube.com/watch?v=v2vnZbhNEpw&list=PLrmNhuZo9sgYJqeTWUhdhtYu3Ol988prg) and working through the exercises from the [CP2K Workshop 2019 at Ghent University](https://www.cp2k.org/events:2019_cp2k_workshop_ghent:index). I have included some additional links at the at end of tutorial, as well as to some polaron papers that you can read if you are interested to learn more about polarons.
 
 All files corresponding to the tutorial are available on our [group Github page](https://github.com/LiuTheoryLab/wiki_cp2k). I have organised the files such that the examples you can run are in the folder /examples, and my original files are also included for reference in a separate folder. 
 
@@ -42,7 +42,9 @@ Run command
 
 This is the HOMO LUMO gap, 2.07 eV compared to the [experimental band gap 3.2 eV](https://doi.org/10.1016/0038-1098(93)90427-O). This underestimation of the band gap is expected for PBE, and generally hybrid functionals are required to reproduce experimental band gaps. 
 
-Next we perform a geometry optimisation starting using the automatically generated restart file 'tio2-1.restart'. You should make a new folder and re-name 'tio2-1.restart' to an input filename of your choice such as ['input.inp'](https://github.com/LiuTheoryLab/wiki_cp2k/blob/main/tio2/anatase/cell-441/mp-390/hole/from-neutral/pbe-u-o/pbe/input/input.inp). Change lines 'CHARGE 0' to 'CHARGE 1' and 'MULTIPLICITY 1' to 'MULTIPLICITY 2' in 'input.inp' to create a charge of 1, equivalent to removing an electron from the system. The multiplicity keyword can just be removed and CP2K will automatically calculate it, but it is worthwhile to get in the habit of controlling the multiplicity yourself as it must be manually set if studying magnetic systems. Run this new calculation, and run same commands 
+Next we perform a geometry optimisation starting using the automatically generated restart file 'tio2-1.restart'. You should make a new folder and re-name 'tio2-1.restart' to an input filename of your choice such as ['input.inp'](https://github.com/LiuTheoryLab/wiki_cp2k/blob/main/tio2/anatase/cell-441/mp-390/hole/from-neutral/pbe-u-o/pbe/input/input.inp). Change lines 'CHARGE 0' to 'CHARGE 1' and 'MULTIPLICITY 1' to 'MULTIPLICITY 2' in 'input.inp' to create a charge of 1, equivalent to removing an electron from the system. The multiplicity keyword can just be removed and CP2K will automatically calculate it, but it is worthwhile to get in the habit of controlling the multiplicity yourself as it must be manually set if studying magnetic systems. Note that CP2K will automatically add a homogeneous background charge in order to keep the system neutral, as otherwise the electrostatic energy will diverge. This is standard in all DFT codes, but is worth understanding that performing calculations on charged systems introduces a number of challenges and approximations. 
+
+Run this new calculation, and run same commands 
 
 ```txt
 grep 'Total F' cp2k_log.log 
@@ -144,6 +146,7 @@ From my understanding of plane wave DFT calculations, the total energy can be co
 1. CP2K is a challenging code to use, with many keywords and generally poor documentation. It can take a while to become experienced with CP2K, and get a 'feel' for appropriate keyword choices. The values in this work are a reasonable starting point, and should work for most systems that are not magnetic or strongly correlated. 
 2. Polarons are generally only indirectly measured by experiments. For example in conductivity measurements polarons are characterised by an increase in conductivity with temperature, as there is an activation barrier for polaron hopping. This is different to band transport, characterised by a decrease in conductivity with temperature as a result of phonon scattering. As such, polaron calculations can be seen as problematic becasue the structure and dynamics of polarons are only indirectly measurable by experiment. There is often considerable disagreement regarding the structure and dynamics of polarons in different materials.
 3. Optimally tuned range-separated hybrid functionals such as HSE or PBE0-TC-LRC remain the only appropriate functionals for polaron structure and dynamics. As these are expensive, I am currently exploring how machine learning can be used to increase the accessible length-scales and time-scales while preserving hybrid level accuracy. I hope that in the future advances in density functional theory will provide more accurate and cheaper functionals, however this seems unlikely to happen in the near-future. 
+4. There are a number of physics papers that present analytical modelling of polarons, typically based on model Hamiltonians (e.g. [Luo et al](https://www.nature.com/articles/s41567-025-02954-1), [Lafuente-Bartolome et al](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.106.075119) and [Sio et al](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.122.246403) ). I do not trust these approaches, as they neglect the most important factor in small polaron transport: the electronic coupling of the initial and final diabatic states. 
 
 ## CP2K website resources:
 1. [CP2K Github releases](https://github.com/cp2k/cp2k/releases)
@@ -163,4 +166,11 @@ From my understanding of plane wave DFT calculations, the total energy can be co
 1. [Trends in catalytic activity, Imperial College London](https://wiki.ch.ic.ac.uk/wiki/index.php?title=TrendsCatalyticActivity)
 2. [Constrained DFT, CP2K website](https://manual.cp2k.org/trunk/methods/dft/constrained.html)
 
-
+## Polaron reference material:
+1. [Small Polarons in Transition Metal Oxides, Handbook of Materials Modeling.](https://link.springer.com/rwe/10.1007/978-3-319-44680-6_52)
+2. [Formation and dynamics of small polarons on the rutile TiO2(110) surface, Article.](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.045306)
+3. [First-Principles Modeling of Polaron Formation in TiO2 Polymorphs, Article.](https://pubs.acs.org/doi/10.1021/acs.jctc.8b00199)
+4. [Ferrotoroidic polarons in antiferrodistortive SrTiO3](https://link.aps.org/doi/10.1103/PhysRevB.101.214101)
+5. [Machine Learning Small Polaron Dynamics](https://link.aps.org/doi/10.1103/PhysRevLett.134.216301)
+6. [Polarons on transition-metal oxide surfaces, Thesis.](https://utheses.univie.ac.at/detail/49433)
+7. [Charge transport in bulk hematite and at the hematite/water interface, Thesis.](https://discovery.ucl.ac.uk/id/eprint/10153463/2/thesis.pdf)
